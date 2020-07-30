@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "694139746555",
+    "firebase_url": "https://herbalapp-61a7d.firebaseio.com",
+    "project_id": "herbalapp-61a7d",
+    "storage_bucket": "herbalapp-61a7d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694139746555:android:cd7e4ca2023fb51d7e585e",
+        "android_client_info": {
+          "package_name": "com.kiduyu.joshuaproject.k_vet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "694139746555-g925eaoebpas1eeo6qi482dnodjvj8ao.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kiduyu.joshuaproject.k_vet",
+            "certificate_hash": "3ba39af2962b98b1aa6b294bdf81bd32eea77ba7"
+          }
+        },
+        {
+          "client_id": "694139746555-qjc4eg72avdo43edchj2n11c26nipvng.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6mKjNOGul_hNe8PYQvYWsPS0MzZ7Wq2I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "694139746555-qjc4eg72avdo43edchj2n11c26nipvng.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
