@@ -1,0 +1,7 @@
+<resources>
+
+    <dimen name="dots_height">30dp</dimen>
+    <dimen name="onboardingHeaderSize">30dp</dimen>
+    <dimen name="onboardingContentSize">14dp</dimen>
+
+</resources>
