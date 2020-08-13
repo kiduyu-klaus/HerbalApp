@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 
 import com.kiduyu.joshuaproject.k_vet.R;
+import com.ramijemli.percentagechartview.PercentageChartView;
 
 import java.util.Objects;
 
@@ -14,11 +15,9 @@ public class Loading {
 
     }
     public static void showProgressDialog(Context context) {
-        ProgressDialog progressDialog;
-        progressDialog = new ProgressDialog(context);
-        progressDialog.show();
-        progressDialog.setContentView(R.layout.loading);
-        progressDialog.setCanceledOnTouchOutside(false);
+        PercentageChartView progressDialog;
+        progressDialog = new PercentageChartView(context);
+        progressDialog.apply();
 
     }
 
