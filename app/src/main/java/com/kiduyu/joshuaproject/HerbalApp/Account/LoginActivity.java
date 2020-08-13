@@ -2,7 +2,6 @@ package com.kiduyu.joshuaproject.HerbalApp.Account;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import com.kiduyu.joshuaproject.HerbalApp.Loading.Loading;
@@ -16,10 +15,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         StatusBar.changeStatusBarColor(this);
-        ProgressDialog progressDialog;
-        progressDialog = new ProgressDialog(this);
-        progressDialog.show();
-        progressDialog.setContentView(R.layout.loading);
-        progressDialog.setCanceledOnTouchOutside(false);
+        Loading.showProgressDialog(this);
     }
 }
