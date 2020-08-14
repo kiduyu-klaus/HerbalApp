@@ -1,21 +1,17 @@
 package com.kiduyu.joshuaproject.HerbalApp.StatusBar;
 
 import android.app.Activity;
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Build;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-
-
 public class StatusBar {
 
-    public StatusBar(){
+    public StatusBar (){
 
     }
-
     /**
      * Making notification bar transparent
      */

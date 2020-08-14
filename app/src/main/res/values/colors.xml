@@ -14,4 +14,13 @@
     <color name="darkModeBackground">#353567</color>
     <color name="darkModeTextColor">#fff</color>
     <color name="white">#ffff</color>
+
+
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGrey0">#F1F1F1</color>
+    <color name="colorGrey">#CECECE</color>
+    <color name="colorGrey1">#888888</color>
+    <color name="colorGrey2">#5A5A5A</color>
+    <color name="colorBalck">#131313</color>
+    <color name="colorRad">#d71c32</color>
 </resources>

@@ -3,22 +3,37 @@ package com.kiduyu.joshuaproject.HerbalApp.Loading;
 import android.app.ProgressDialog;
 import android.content.Context;
 
+
 import com.kiduyu.joshuaproject.k_vet.R;
-import com.ramijemli.percentagechartview.PercentageChartView;
 
 import java.util.Objects;
+import java.util.logging.Handler;
 
 public class Loading {
-    ProgressDialog progressDialog;
 
-    public Loading (){
+
+    public Loading(){
 
     }
+
     public static void showProgressDialog(Context context) {
-        PercentageChartView progressDialog;
-        progressDialog = new PercentageChartView(context);
-        progressDialog.apply();
+        ProgressDialog progressDialog;
+        progressDialog = new ProgressDialog(context);
+        progressDialog.show();
+        progressDialog.setContentView(R.layout.progress_dialog);
+        progressDialog.setCanceledOnTouchOutside(false);
+        Objects.requireNonNull(progressDialog.getWindow()).setBackgroundDrawableResource(android.R.color.transparent);
 
     }
+
+    public static void hideProgressDialog(Context context) {
+        ProgressDialog progressDialog;
+        progressDialog = new ProgressDialog(context);
+        progressDialog.dismiss();
+
+    }
+
+
+
 
 }
