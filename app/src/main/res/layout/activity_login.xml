@@ -49,7 +49,7 @@
                 android:textColorHint="@color/colorGrey2">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/ed_username"
+                    android:id="@+id/ed_username_logon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Email Or Mobile No"
@@ -65,7 +65,7 @@
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/ed_password"
+                    android:id="@+id/ed_password_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/password"
@@ -83,6 +83,7 @@
                    android:layout_height="wrap_content"
                    android:layout_gravity="bottom"
                    android:text="Remember Me"
+                   android:id="@+id/remember_me_chkb"
                    android:padding="5dp"
                    android:textSize="18sp"
                    android:textStyle="bold"
@@ -117,7 +118,7 @@
                 android:gravity="center">
 
                 <TextView
-                    android:id="@+id/btn_login"
+                    android:id="@+id/btn_login_logon"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_gravity="center"
