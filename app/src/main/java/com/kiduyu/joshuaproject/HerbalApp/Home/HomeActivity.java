@@ -70,35 +70,35 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.lvl_home:
                 txtActiontitle.setText("Home");
                 Glide.with(this).load(R.drawable.ic_home).into(circleImageView);
-                relativeLayout.setBackgroundColor(Color.parseColor("#fff"));
+                relativeLayout.setBackgroundColor(Color.parseColor("#FFF3F0F0"));
                 fragment = new HomeFragment();
                 callFragment(fragment);
                 break;
             case R.id.myprofile:
                 txtActiontitle.setText("Profile");
                 Glide.with(this).load(R.drawable.ic_profile).into(circleImageView);
-                relativeLayout.setBackgroundColor(Color.parseColor("#fff"));
+                relativeLayout.setBackgroundColor(Color.parseColor("#FFF3F0F0"));
                 fragment = new ProfileFragment();
                 callFragment(fragment);
                 break;
             case R.id.herbs:
                 txtActiontitle.setText("Herbs Details");
                 Glide.with(this).load(R.drawable.ic_herb).into(circleImageView);
-                relativeLayout.setBackgroundColor(Color.parseColor("#fff"));
+                relativeLayout.setBackgroundColor(Color.parseColor("#FFF3F0F0"));
                 fragment = new HerbsFragment();
                 callFragment(fragment);
                 break;
             case R.id.chats:
                 txtActiontitle.setText("All My Chats");
                 Glide.with(this).load(R.drawable.ic_chat).into(circleImageView);
-                relativeLayout.setBackgroundColor(Color.parseColor("#56BCEC"));
+                relativeLayout.setBackgroundColor(Color.parseColor("#FFF3F0F0"));
                 fragment = new ChatsFragment();
                 callFragment(fragment);
                 break;
             case R.id.consultants:
                 txtActiontitle.setText("All Consultants");
                 Glide.with(this).load(R.drawable.ic_doctor).into(circleImageView);
-                relativeLayout.setBackgroundColor(Color.parseColor("#56BCEC"));
+                relativeLayout.setBackgroundColor(Color.parseColor("#FFF3F0F0"));
                 fragment = new ConsultantsFragment();
                 callFragment(fragment);
 
@@ -106,14 +106,14 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.Tips:
                 txtActiontitle.setText("Herbal Tips");
                 Glide.with(this).load(R.drawable.ic_tip).into(circleImageView);
-                relativeLayout.setBackgroundColor(Color.parseColor("#56BCEC"));
+                relativeLayout.setBackgroundColor(Color.parseColor("#FFF3F0F0"));
                 fragment = new TipsFragment();
                 callFragment(fragment);
                 break;
             case R.id.payments:
                 txtActiontitle.setText("Buy Goods");
                 Glide.with(this).load(R.drawable.ic_card_giftcard_white_24dp).into(circleImageView);
-                relativeLayout.setBackgroundColor(Color.parseColor("#56BCEC"));
+                relativeLayout.setBackgroundColor(Color.parseColor("#FFF3F0F0"));
                 fragment = new PaymentsFragment();
                 callFragment(fragment);
 
