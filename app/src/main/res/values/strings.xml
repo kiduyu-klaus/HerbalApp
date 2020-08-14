@@ -3,4 +3,33 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="sing">Signup</string>
+    <string name="spinner_title">select Area</string>
+
+    <string-array name="profile_dropdown">
+        <item>Choose location</item>
+        <item>Dedan Kimathi</item>
+        <item>Kingongo</item>
+        <item>Kamakwa</item>
+        <item>Kingongo</item>
+        <item>Skuta</item>
+        <item>Nyeri Town</item>
+        <item>Mweiga</item>
+        <item>Murigato</item>
+        <item>Nyeri Uptown</item>
+        <item>Near kingongo Prisons</item>
+        <item>Near Naivas Supermarket</item>
+    </string-array>
+    <string name="title_activity_maps">Map</string>
+
+
+    <string name="dedan_kimathi">-0.393794,36.955898</string>
+    <string name="kingongo">-0.413747,36.955328</string>
+    <string name="kamakwa">-0.428061,36.931601</string>
+    <string name="skuta">-0.435504,36.973551</string>
+    <string name="nyeri">-0.435504,36.973551</string>
+    <string name="near_naivas">-0.424593,36.955366</string>
+    <string name="stage_kimathi">-0.421171,36.950677</string>
+    <string name="near_prisons">-0.415538,36.958402</string>
+    <string name="murigato">-0.403018,36.945495</string>
+    <string name="muiga">-0.316892,36.9006925</string>
 </resources>
