@@ -1,9 +1,11 @@
 package com.kiduyu.joshuaproject.HerbalApp.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,6 +45,13 @@ public class ConsultantAdapter extends RecyclerView.Adapter<ConsultantAdapter.My
         holder.phone.setText("Consultant Cell: "+consultant.getPhone());
         holder.date.setText("Joined our System on: "+consultant.getDate());
 
+        holder.bookAp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(mcontext,)
+            }
+        });
+
     }
 
     @Override
@@ -54,6 +63,7 @@ public class ConsultantAdapter extends RecyclerView.Adapter<ConsultantAdapter.My
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView title, location, phone, date;
+        Button bookAp;
         ImageView cover;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,6 +71,8 @@ public class ConsultantAdapter extends RecyclerView.Adapter<ConsultantAdapter.My
             location = itemView.findViewById(R.id.consultant_location);
             phone = itemView.findViewById(R.id.consultant_phone);
             date = itemView.findViewById(R.id.consultant_date);
+
+            bookAp = itemView.findViewById(R.id.book_appointment);
 
             cover = itemView.findViewById(R.id.consultant_image);
         }
