@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.kiduyu.joshuaproject.HerbalApp.Activities.NotificationActivity;
+import com.kiduyu.joshuaproject.HerbalApp.Session.Prevalent;
 import com.kiduyu.joshuaproject.HerbalApp.StatusBar.StatusBar;
 import com.kiduyu.joshuaproject.HerbalApp.UserFragments.ChatsFragment;
 import com.kiduyu.joshuaproject.HerbalApp.UserFragments.ConsultantsFragment;
@@ -27,6 +28,7 @@ import com.kiduyu.joshuaproject.HerbalApp.UserFragments.ProfileFragment;
 import com.kiduyu.joshuaproject.HerbalApp.UserFragments.TipsFragment;
 import com.kiduyu.joshuaproject.k_vet.BuildConfig;
 import com.kiduyu.joshuaproject.k_vet.R;
+import com.shashank.sony.fancytoastlib.FancyToast;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -52,6 +54,19 @@ public class HomeActivity extends AppCompatActivity {
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+        if (Prevalent.currentOnlineUser==null){
+            FancyToast.makeText(this,"No user Logged In", FancyToast.LENGTH_LONG,FancyToast.WARNING,false).show();
+        }else {
+            String username=Prevalent.currentOnlineUser.getFname();
+            String location=Prevalent.currentOnlineUser.getEmail();
+
+            TextView name =findViewById(R.id.txt_name_navview);
+            TextView email =findViewById(R.id.txt_email_navview);
+            name.setText(username);
+            email.setText(location);
+
+        }
     }
 
     public void callFragment(Fragment fragmentClass) {

@@ -21,7 +21,14 @@
             android:background="@drawable/rounded_area"
             android:textAlignment="center"
             android:padding="5dp"/>
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="20dp"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:text="Auto filled fields"
+            android:textAlignment="center"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -51,12 +58,47 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_user_owner"
                 android:layout_width="match_parent"
-                android:textColorHint="@android:color/black"
                 android:layout_height="wrap_content"
                 android:hint="User Name"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="10dp"
+            android:textColorHint="@android:color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:id="@+id/edt_book_consu_phone"
+                android:layout_height="wrap_content"
+                android:hint="Consultant Phone*" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="10dp"
+            android:textColorHint="@android:color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:id="@+id/edt_book_user_phone"
+                android:layout_height="wrap_content"
+                android:hint="User Phone number*" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textAppearance="@android:style/TextAppearance.Large"
+            android:text="Fill the fields below"
+            android:textAlignment="center"/>
         <com.google.android.material.textfield.TextInputLayout
 
             android:layout_width="match_parent"
@@ -94,43 +136,13 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:layout_marginTop="10dp"
-            android:textColorHint="@android:color/black">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:id="@+id/edt_book_consu_phone"
-                android:layout_height="wrap_content"
-                android:hint="Consultant Phone*" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:layout_marginTop="10dp"
-            android:textColorHint="@android:color/black">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:id="@+id/edt_book_user_phone"
-                android:layout_height="wrap_content"
-                android:hint="User Phone number*" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Send Appointment"
             android:textAppearance="?android:textAppearanceLarge"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
             android:padding="10dp"
             android:id="@+id/edt_btn_save"
             android:layout_marginTop="10dp"

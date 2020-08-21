@@ -69,7 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
         String mlocation = location.getSelectedItem().toString().trim();
         String memail = email.getText().toString().trim();
         String mnumber = number.getText().toString().trim();
-        String mpass = number.getText().toString().trim();
+        String mpass = pass.getText().toString().trim();
 
         if (TextUtils.isEmpty(mname)) {
             FancyToast.makeText(this, "Please write your name...", FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show();
