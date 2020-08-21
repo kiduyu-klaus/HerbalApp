@@ -13,18 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
         <activity android:name="com.kiduyu.joshuaproject.HerbalApp.Activities.BookAppointment"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/ActionBar"></activity>
         <activity
             android:name="com.kiduyu.joshuaproject.HerbalApp.Activities.NotificationActivity"
             android:theme="@style/AppTheme"></activity>
         <activity
             android:name="com.kiduyu.joshuaproject.HerbalApp.Home.HomeActivity"
             android:theme="@style/AppTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name="com.kiduyu.joshuaproject.HerbalApp.Account.RegisterActivity"
@@ -34,7 +30,13 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name="com.kiduyu.joshuaproject.HerbalApp.Splash.MainActivity"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

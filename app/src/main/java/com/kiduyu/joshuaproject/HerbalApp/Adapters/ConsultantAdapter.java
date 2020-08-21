@@ -51,7 +51,7 @@ public class ConsultantAdapter extends RecyclerView.Adapter<ConsultantAdapter.My
             public void onClick(View v) {
                 Intent intent= new Intent(mcontext, BookAppointment.class);
                 intent.putExtra("consultant",consultant.getName());
-                intent.putExtra("consultant",consultant.getPhone());
+                intent.putExtra("consultant_phone",consultant.getPhone());
                 mcontext.startActivity(intent);
             }
         });
