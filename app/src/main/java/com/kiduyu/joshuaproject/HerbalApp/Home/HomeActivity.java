@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.kiduyu.joshuaproject.HerbalApp.Activities.NotificationActivity;
 import com.kiduyu.joshuaproject.HerbalApp.StatusBar.StatusBar;
 import com.kiduyu.joshuaproject.HerbalApp.UserFragments.ChatsFragment;
 import com.kiduyu.joshuaproject.HerbalApp.UserFragments.ConsultantsFragment;

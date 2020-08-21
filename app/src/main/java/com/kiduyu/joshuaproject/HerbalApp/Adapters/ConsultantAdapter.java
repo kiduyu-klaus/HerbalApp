@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.kiduyu.joshuaproject.HerbalApp.Activities.BookAppointment;
 import com.kiduyu.joshuaproject.HerbalApp.Constants.Constants;
 import com.kiduyu.joshuaproject.HerbalApp.Models.Consultant;
 import com.kiduyu.joshuaproject.k_vet.R;
@@ -37,7 +38,7 @@ public class ConsultantAdapter extends RecyclerView.Adapter<ConsultantAdapter.My
 
     @Override
     public void onBindViewHolder(@NonNull ConsultantAdapter.MyViewHolder holder, int position) {
-        Consultant consultant = consultantList.get(position);
+        final Consultant consultant = consultantList.get(position);
 
         Glide.with(mcontext).load(Constants.Baseimageurl+consultant.getImage()).into(holder.cover);
         holder.title.setText(consultant.getName());
@@ -48,7 +49,10 @@ public class ConsultantAdapter extends RecyclerView.Adapter<ConsultantAdapter.My
         holder.bookAp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent= new Intent(mcontext,)
+                Intent intent= new Intent(mcontext, BookAppointment.class);
+                intent.putExtra("consultant",consultant.getName());
+                intent.putExtra("consultant",consultant.getPhone());
+                mcontext.startActivity(intent);
             }
         });
 
