@@ -20,30 +20,18 @@ public class Loading {
 
     }
 
-    public static void showProgressDialog(Context context) {
+    public static void showProgressDialog(Context context,Boolean state) {
         ProgressDialog progressDialog;
         progressDialog = new ProgressDialog(context);
-        progressDialog.show();
-        progressDialog.setContentView(R.layout.progress_dialog);
-        progressDialog.setCanceledOnTouchOutside(false);
-        Objects.requireNonNull(progressDialog.getWindow()).setBackgroundDrawableResource(android.R.color.transparent);
+        if (state==true){
+            progressDialog.show();
+            progressDialog.setContentView(R.layout.progress_dialog);
+            progressDialog.setCanceledOnTouchOutside(false);
+            Objects.requireNonNull(progressDialog.getWindow()).setBackgroundDrawableResource(android.R.color.transparent);
 
-    }
-    public static void pleaseWait(Context context) {
-        ProgressDialog progressDialog;
-        progressDialog = new ProgressDialog(context);
-        progressDialog.show();
-        progressDialog.setContentView(R.layout.please_wait);
-        progressDialog.setCanceledOnTouchOutside(false);
-        Objects.requireNonNull(progressDialog.getWindow()).setBackgroundDrawableResource(android.R.color.transparent);
-
-    }
-
-    public static void hideProgressDialog(Context context) {
-        ProgressDialog progressDialog;
-        progressDialog = new ProgressDialog(context);
-        progressDialog.dismiss();
-
+        } else{
+            progressDialog.dismiss();
+        }
     }
 
 

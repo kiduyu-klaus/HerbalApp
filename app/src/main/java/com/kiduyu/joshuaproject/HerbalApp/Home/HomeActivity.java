@@ -111,7 +111,7 @@ public class HomeActivity extends AppCompatActivity {
                 callFragment(fragment);
                 break;
             case R.id.payments:
-                txtActiontitle.setText("Buy Goods");
+                txtActiontitle.setText("All My Payments");
                 Glide.with(this).load(R.drawable.ic_card_giftcard_white_24dp).into(circleImageView);
                 relativeLayout.setBackgroundColor(Color.parseColor("#FFF3F0F0"));
                 fragment = new PaymentsFragment();

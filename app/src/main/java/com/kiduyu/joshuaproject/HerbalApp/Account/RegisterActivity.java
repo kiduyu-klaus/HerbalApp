@@ -87,7 +87,7 @@ public class RegisterActivity extends AppCompatActivity {
             pass.setError("Password Required");
             FancyToast.makeText(this, "Please key in your secret Password...", FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show();
         } else {
-            Loading.pleaseWait(this);
+            Loading.showProgressDialog(this,true);
             FancyToast.makeText(this, "Please Wait...", FancyToast.LENGTH_SHORT, FancyToast.INFO, false).show();
 
             ValidateCredentials(mname, mlocation, memail, mnumber, mpass);
@@ -118,12 +118,12 @@ public class RegisterActivity extends AppCompatActivity {
 
                                                 if (task.isSuccessful()) {
                                                     FancyToast.makeText(RegisterActivity.this, "Congratulations " + mname + " your account has been created.", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, false).show();
-                                                    Loading.hideProgressDialog(RegisterActivity.this);
+                                                    Loading.showProgressDialog(RegisterActivity.this,false);
 
                                                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                                     startActivity(intent);
                                                 } else {
-                                                    Loading.hideProgressDialog(RegisterActivity.this);
+                                                    Loading.showProgressDialog(RegisterActivity.this,false);
                                                     FancyToast.makeText(RegisterActivity.this, "Network Error: Please try again after some time...", FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
                                                 }
 
@@ -151,7 +151,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 } else {
                     FancyToast.makeText(RegisterActivity.this, mnumber + " already exists.", FancyToast.LENGTH_SHORT, FancyToast.WARNING, false).show();
-                    Loading.hideProgressDialog(RegisterActivity.this);
+                    Loading.showProgressDialog(RegisterActivity.this,false);
                     FancyToast.makeText(RegisterActivity.this, "Please try again using another phone number.", FancyToast.LENGTH_SHORT, FancyToast.INFO, false).show();
 
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);

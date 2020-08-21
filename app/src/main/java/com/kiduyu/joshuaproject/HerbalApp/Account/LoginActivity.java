@@ -71,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
             FancyToast.makeText(this, "Password Is Required..", FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show();
             return;
         } else {
-            Loading.pleaseWait(this);
+            Loading.showProgressDialog(this,true);
 
             AllowAccessToAccount(phone, password);
 
@@ -98,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (usersData.getPhone().equals(phone)) {
                         if (usersData.getPass().equals(password)) {
                             FancyToast.makeText(LoginActivity.this, "Congratulations " + usersData.getFname() + " your account has been Verified.", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, false).show();
-
+                            Loading.showProgressDialog(LoginActivity.this,false);
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                             Prevalent.currentOnlineUser = usersData;
                             startActivity(intent);
