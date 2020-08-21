@@ -52,4 +52,5 @@
     <color name="ratingBarNormal">#60A7BB</color>
     <color name="ratingSelect">#FEB500</color>
     <color name="rating">#1d8612</color>
+    <color name="gray">#c4c4c4</color>
 </resources>

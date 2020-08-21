@@ -13,7 +13,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView_latestListView_adapter"
-            android:layout_width="130dp"
+            android:layout_width="140dp"
             app:cardCornerRadius="15dp"
             android:layout_height="match_parent"
             android:layout_margin="5dp">
@@ -30,7 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
+            android:padding="5dp"
             android:layout_marginEnd="5dp"
             android:layout_toEndOf="@+id/cardView_latestListView_adapter"
             android:layout_toRightOf="@+id/cardView_latestListView_adapter"
@@ -69,21 +70,6 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:background="@drawable/rate_background">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:ellipsize="end"
-                        android:gravity="center"
-                        android:maxLines="1"
-                        android:paddingLeft="5dp"
-                        android:paddingTop="2dp"
-                        android:paddingRight="5dp"
-                        android:paddingBottom="2dp"
-                        android:text="200 views"
-                        android:textColor="@color/textView_rate_latestListView_adapter" />
 
                 </RelativeLayout>
 
@@ -125,6 +111,22 @@
                 android:layout_marginTop="5dp"
                 android:text="about Consultant"
                 android:textColor="@color/black_alpha_75" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="right"
+                android:padding="3dp">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/rounded_area"
+                    android:padding="2dp"
+                    android:layout_height="wrap_content"
+                    android:text="Book Appointment"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 

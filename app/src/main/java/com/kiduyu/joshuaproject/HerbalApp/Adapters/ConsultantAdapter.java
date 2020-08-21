@@ -39,9 +39,9 @@ public class ConsultantAdapter extends RecyclerView.Adapter<ConsultantAdapter.My
 
         Glide.with(mcontext).load(Constants.Baseimageurl+consultant.getImage()).into(holder.cover);
         holder.title.setText(consultant.getName());
-        holder.location.setText(consultant.getLocation());
-        holder.phone.setText(consultant.getPhone());
-        holder.date.setText(consultant.getDate());
+        holder.location.setText("Located in: "+consultant.getLocation());
+        holder.phone.setText("Consultant Cell: "+consultant.getPhone());
+        holder.date.setText("Joined our System on: "+consultant.getDate());
 
     }
 

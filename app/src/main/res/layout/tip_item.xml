@@ -71,7 +71,7 @@
                     android:layout_marginRight="5dp"
                     android:background="@drawable/rate_background">
 
-                    
+
                 </RelativeLayout>
 
 
