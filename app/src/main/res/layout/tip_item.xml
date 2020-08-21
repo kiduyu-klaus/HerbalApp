@@ -71,21 +71,7 @@
                     android:layout_marginRight="5dp"
                     android:background="@drawable/rate_background">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:ellipsize="end"
-                        android:gravity="center"
-                        android:maxLines="1"
-                        android:paddingLeft="5dp"
-                        android:paddingTop="2dp"
-                        android:paddingRight="5dp"
-                        android:paddingBottom="2dp"
-                        android:text="200 views"
-                        android:textColor="@color/textView_rate_latestListView_adapter" />
-
+                    
                 </RelativeLayout>
 
 
