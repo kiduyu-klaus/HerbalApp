@@ -28,6 +28,15 @@ public class Netcheck {
         return dateFormat.format(date);
     }
 
+    public static String getTime() {
+        Calendar c = Calendar.getInstance();
+        int seconds=c.get(Calendar.SECOND);
+        int minutes=c.get(Calendar.MINUTE);
+        int hours=c.get(Calendar.HOUR);
+        String time=hours+":"+minutes+":"+seconds;
+        return time;
+    }
+
     public static String getNextDate() {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Calendar calendar = Calendar.getInstance();

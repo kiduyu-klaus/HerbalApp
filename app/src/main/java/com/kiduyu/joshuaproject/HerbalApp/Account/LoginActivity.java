@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.CheckBox;
@@ -92,8 +93,9 @@ public class LoginActivity extends AppCompatActivity {
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.child("Users").child(phone).exists()) {
-                    User usersData = dataSnapshot.child("Users").child(phone).getValue(User.class);
+                String uniqueid = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+                if (dataSnapshot.child("Users").child(uniqueid).exists()) {
+                    User usersData = dataSnapshot.child("Users").child(uniqueid).getValue(User.class);
 
                     if (usersData.getPhone().equals(phone)) {
                         if (usersData.getPass().equals(password)) {

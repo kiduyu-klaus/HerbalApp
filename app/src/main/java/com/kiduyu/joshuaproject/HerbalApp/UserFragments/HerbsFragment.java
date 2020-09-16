@@ -1,9 +1,14 @@
 package com.kiduyu.joshuaproject.HerbalApp.UserFragments;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -35,17 +40,43 @@ public class HerbsFragment extends Fragment {
     private HerbsAdapter herbsAdapter;
     public static int confirmation = 0;
     public static boolean isRefreshed;
+    EditText search;
+    ProgressDialog pDialog;
     private RequestQueue mRequestQueue;
     RecyclerView recycler;
     SwipeRefreshLayout swipeRefreshLayout;
+    LinearLayout linearLayout,recyclerly;
     private ArrayList<Herb> herbArrayList = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.herbs_fragment, container, false);
-
+        pDialog = new ProgressDialog(getActivity());
+        linearLayout=layout.findViewById(R.id.lyt_not_found);
+        recyclerly=layout.findViewById(R.id.ly_recycle);
         mRequestQueue = Volley.newRequestQueue(getActivity());
+        search = layout.findViewById(R.id.search_editText_herbs);
+
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+
+
         recycler = layout.findViewById(R.id.recyclerview_herbs);
 
         swipeRefreshLayout = layout.findViewById(R.id.consultant_refresh_herbs);
@@ -54,7 +85,7 @@ public class HerbsFragment extends Fragment {
         recycler.setLayoutManager(layoutManager);
         recycler.setFocusable(false);
         fetchData();
-        Loading.showProgressDialog(getActivity(),true);
+        //Loading.showProgressDialog(getActivity(),true);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -66,11 +97,28 @@ public class HerbsFragment extends Fragment {
         });
 
 
-
         return layout;
     }
 
+    private void filter(String text) {
+        ArrayList<Herb> filteredList = new ArrayList<>();
+        for (Herb item : herbArrayList) {
+            if (item.getName().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+
+        herbsAdapter = new HerbsAdapter(getActivity(), filteredList);
+        recycler.setAdapter(herbsAdapter);
+        herbsAdapter.notifyDataSetChanged();
+
+    }
+
     private void fetchData() {
+        pDialog.setTitle("Fetching Herbs");
+        pDialog.setMessage("Please wait, while we are checking the database.");
+        pDialog.setCanceledOnTouchOutside(false);
+        pDialog.show();
         String urlForJsonObject = Constants.Baseurl + "herbs.php";
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,
@@ -91,7 +139,8 @@ public class HerbsFragment extends Fragment {
                                     String disease = consultant.getString("disease");
                                     String image = consultant.getString("image");
 
-                                    herbArrayList.add(new Herb(title,description,disease,image));
+                                    pDialog.dismiss();
+                                    herbArrayList.add(new Herb(title, description, disease, image));
 
                                 }
 
@@ -103,8 +152,8 @@ public class HerbsFragment extends Fragment {
                                     String description = consultant.getString("description");
                                     String disease = consultant.getString("disease");
                                     String image = consultant.getString("image");
-
-                                    herbArrayList.add(new Herb(title,description,disease,image));
+                                    pDialog.dismiss();
+                                    herbArrayList.add(new Herb(title, description, disease, image));
 
                                 }
                             }
@@ -120,6 +169,7 @@ public class HerbsFragment extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
+                pDialog.dismiss();
                 volleyError.printStackTrace();
             }
         });

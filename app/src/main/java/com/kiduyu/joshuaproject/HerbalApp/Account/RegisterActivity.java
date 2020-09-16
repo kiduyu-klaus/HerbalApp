@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Spinner;
@@ -36,7 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
     TextView login;
     Spinner location;
     private static int TIME_OUT = 8000;
-    ProgressDialog progressDialog;
+    ProgressDialog pDialog;
 
 
     @Override
@@ -60,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
         Context context;
-        progressDialog= new ProgressDialog(this);
+        pDialog= new ProgressDialog(this);
 
     }
 
@@ -87,7 +88,7 @@ public class RegisterActivity extends AppCompatActivity {
             pass.setError("Password Required");
             FancyToast.makeText(this, "Please key in your secret Password...", FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show();
         } else {
-            Loading.showProgressDialog(this,true);
+
             FancyToast.makeText(this, "Please Wait...", FancyToast.LENGTH_SHORT, FancyToast.INFO, false).show();
 
             ValidateCredentials(mname, mlocation, memail, mnumber, mpass);
@@ -97,16 +98,20 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void ValidateCredentials(final String mname, final String mlocation, final String memail, final String mnumber, final String mpass) {
-
+        pDialog.setTitle("Creating Account");
+        pDialog.setMessage("Please wait, while we are checking the credentials.");
+        pDialog.setCanceledOnTouchOutside(false);
+        pDialog.show();
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
         RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (!(dataSnapshot.child("Users").child(mnumber).exists())) {
-                    User user = new User(mname, mlocation, memail, mnumber, mpass, "");
+                String uniqueid = Netcheck.getIMEI(RegisterActivity.this);
 
-                    RootRef.child("Users").child(mnumber).setValue(user)
+                if (!(dataSnapshot.child("Users").child(uniqueid).exists())) {
+                    User user = new User(mname, mlocation, memail, mnumber, mpass, "");
+                    RootRef.child("Users").child(uniqueid).setValue(user)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull final Task<Void> task) {
@@ -118,12 +123,14 @@ public class RegisterActivity extends AppCompatActivity {
 
                                                 if (task.isSuccessful()) {
                                                     FancyToast.makeText(RegisterActivity.this, "Congratulations " + mname + " your account has been created.", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, false).show();
-                                                    Loading.showProgressDialog(RegisterActivity.this,false);
+                                                   // Loading.showProgressDialog(RegisterActivity.this,false);
 
+                                                    pDialog.dismiss();
                                                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                                     startActivity(intent);
                                                 } else {
-                                                    Loading.showProgressDialog(RegisterActivity.this,false);
+                                                    pDialog.dismiss();
+                                                    //Loading.showProgressDialog(RegisterActivity.this,false);
                                                     FancyToast.makeText(RegisterActivity.this, "Network Error: Please try again after some time...", FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
                                                 }
 
@@ -151,9 +158,9 @@ public class RegisterActivity extends AppCompatActivity {
 
                 } else {
                     FancyToast.makeText(RegisterActivity.this, mnumber + " already exists.", FancyToast.LENGTH_SHORT, FancyToast.WARNING, false).show();
-                    Loading.showProgressDialog(RegisterActivity.this,false);
+                    //Loading.showProgressDialog(RegisterActivity.this,false);
                     FancyToast.makeText(RegisterActivity.this, "Please try again using another phone number.", FancyToast.LENGTH_SHORT, FancyToast.INFO, false).show();
-
+                    pDialog.dismiss();
                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(intent);
                 }
@@ -164,7 +171,8 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 FancyToast.makeText(RegisterActivity.this, String.valueOf(databaseError), FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
-                progressDialog.dismiss();
+               // progressDialog.dismiss();
+                pDialog.dismiss();
             }
         });
     }

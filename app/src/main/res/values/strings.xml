@@ -20,6 +20,12 @@
         <item>Near Naivas Supermarket</item>
     </string-array>
     <string name="title_activity_maps">Map</string>
+    <string name="name_login">Name</string>
+    <string name="email_login">Email</string>
+    <string name="phone_login">Phone</string>
+    <string name="password_login">Password</string>
+    <string name="profile_save">Edit Details</string>
+    <string name="short_lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

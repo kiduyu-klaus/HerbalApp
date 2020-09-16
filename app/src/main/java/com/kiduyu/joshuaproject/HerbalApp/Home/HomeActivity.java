@@ -3,6 +3,7 @@ package com.kiduyu.joshuaproject.HerbalApp.Home;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -19,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.kiduyu.joshuaproject.HerbalApp.Activities.NotificationActivity;
 import com.kiduyu.joshuaproject.HerbalApp.Session.Prevalent;
 import com.kiduyu.joshuaproject.HerbalApp.StatusBar.StatusBar;
+import com.kiduyu.joshuaproject.HerbalApp.UserFragments.AppointmentsFragments;
 import com.kiduyu.joshuaproject.HerbalApp.UserFragments.ChatsFragment;
 import com.kiduyu.joshuaproject.HerbalApp.UserFragments.ConsultantsFragment;
 import com.kiduyu.joshuaproject.HerbalApp.UserFragments.HerbsFragment;
@@ -41,7 +43,8 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        StatusBar.changeStatusBarColor(this);
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this, R.color.statuscolor));
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.statuscolor));
         setContentView(R.layout.activity_home);
 
         txtActiontitle = findViewById(R.id.txt_actiontitle);
@@ -95,6 +98,13 @@ public class HomeActivity extends AppCompatActivity {
                 Glide.with(this).load(R.drawable.ic_profile).into(circleImageView);
                 relativeLayout.setBackgroundColor(Color.parseColor("#FFF3F0F0"));
                 fragment = new ProfileFragment();
+                callFragment(fragment);
+            break;
+            case R.id.lvl_appointments:
+                txtActiontitle.setText("My Appointments");
+                Glide.with(this).load(R.drawable.ic_appointment).into(circleImageView);
+                relativeLayout.setBackgroundColor(Color.parseColor("#FFF3F0F0"));
+                fragment = new AppointmentsFragments();
                 callFragment(fragment);
                 break;
             case R.id.herbs:
