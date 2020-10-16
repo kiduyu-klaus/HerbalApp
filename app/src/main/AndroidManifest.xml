@@ -23,7 +23,7 @@
             android:theme="@style/ActionBar" />
         <activity
             android:name="com.kiduyu.joshuaproject.HerbalApp.Activities.NotificationActivity"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/ActionBar"/>
         <activity
             android:name="com.kiduyu.joshuaproject.HerbalApp.Home.HomeActivity"
             android:theme="@style/AppTheme"></activity>

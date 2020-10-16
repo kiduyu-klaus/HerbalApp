@@ -71,7 +71,7 @@ public class HerbsAdapter extends RecyclerView.Adapter<HerbsAdapter.MyViewHolder
         return consultantList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public  class MyViewHolder extends RecyclerView.ViewHolder {
         TextView title, disease, description;
         ImageView cover;
         public MyViewHolder(@NonNull View itemView) {

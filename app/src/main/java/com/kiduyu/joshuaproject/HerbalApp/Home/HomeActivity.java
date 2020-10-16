@@ -23,6 +23,7 @@ import com.kiduyu.joshuaproject.HerbalApp.StatusBar.StatusBar;
 import com.kiduyu.joshuaproject.HerbalApp.UserFragments.AppointmentsFragments;
 import com.kiduyu.joshuaproject.HerbalApp.UserFragments.ChatsFragment;
 import com.kiduyu.joshuaproject.HerbalApp.UserFragments.ConsultantsFragment;
+import com.kiduyu.joshuaproject.HerbalApp.UserFragments.FavouritesFragment;
 import com.kiduyu.joshuaproject.HerbalApp.UserFragments.HerbsFragment;
 import com.kiduyu.joshuaproject.HerbalApp.UserFragments.HomeFragment;
 import com.kiduyu.joshuaproject.HerbalApp.UserFragments.PaymentsFragment;
@@ -105,6 +106,13 @@ public class HomeActivity extends AppCompatActivity {
                 Glide.with(this).load(R.drawable.ic_appointment).into(circleImageView);
                 relativeLayout.setBackgroundColor(Color.parseColor("#FFF3F0F0"));
                 fragment = new AppointmentsFragments();
+                callFragment(fragment);
+                break;
+            case R.id.lvl_favourites:
+                txtActiontitle.setText("My Favourites");
+                Glide.with(this).load(R.drawable.ic_herb).into(circleImageView);
+                relativeLayout.setBackgroundColor(Color.parseColor("#FFF3F0F0"));
+                fragment = new FavouritesFragment();
                 callFragment(fragment);
                 break;
             case R.id.herbs:
