@@ -54,6 +54,9 @@ public class HomeActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         relativeLayout= findViewById(R.id.layoutid);
         setSupportActionBar(toolbar);
+        if (savedInstanceState== null){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_frame,
+                    new HerbsFragment()).commit();}
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
