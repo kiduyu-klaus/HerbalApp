@@ -123,7 +123,7 @@
                     android:layout_height="48dp"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="@string/login"
+                    android:text="User Login"
                     android:textColor="@color/colorWhite" />
             </LinearLayout>
 
@@ -151,6 +151,48 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="25dp" />
+
+            <LinearLayout
+                android:id="@+id/rv_user_consultant"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/rounded_green2"
+                android:elevation="10dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/btn_login_consultant"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Are You a Consultant ?"
+                    android:textColor="@color/colorWhite" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/rv_user_login"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/rounded_green2"
+                android:elevation="10dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/btn_login_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Are You a User? "
+                    android:textColor="@color/colorWhite" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

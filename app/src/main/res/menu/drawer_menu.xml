@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/user_nav_home"
+        android:icon="@drawable/ic_home"
+        android:title="Home"/>
+
+        <item android:id="@+id/user_nav_approveApp"
+            android:icon="@drawable/ic_home"
+            android:title="Approve Appointments"/>
+
+        <item android:id="@+id/user_nav_my_appointments"
+            android:icon="@drawable/ic_appointment"
+            android:title="My Appointments"/>
+        <item
+            android:id="@+id/user_nav_chats"
+            android:icon="@drawable/ic_chat"
+            android:title="My Chats" />
+
+        <item android:id="@+id/customer_nav_signout"
+            android:icon="@drawable/ic_logout"
+            android:title="SignOut"/>
+    </group>
+
+
+
+</menu>

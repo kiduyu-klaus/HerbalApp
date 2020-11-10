@@ -8,8 +8,11 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.google.android.material.textfield.TextInputEditText;
@@ -18,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.kiduyu.joshuaproject.HerbalApp.Consultants.HomeActivityConsultants;
 import com.kiduyu.joshuaproject.HerbalApp.Home.HomeActivity;
 import com.kiduyu.joshuaproject.HerbalApp.Loading.Loading;
 import com.kiduyu.joshuaproject.HerbalApp.Models.User;
@@ -31,8 +35,9 @@ import io.paperdb.Paper;
 public class LoginActivity extends AppCompatActivity {
     TextInputEditText phonenumber, pass;
     private CheckBox chkBoxRememberMe;
-    TextView login_btn;
-
+    TextView login_btn, specialised_btn,user_btn;
+    private String parentDbName = "Users";
+    LinearLayout user, consultant;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +47,8 @@ public class LoginActivity extends AppCompatActivity {
         phonenumber = findViewById(R.id.ed_username_logon);
         pass = findViewById(R.id.ed_password_login);
         login_btn = findViewById(R.id.btn_login_logon);
+        specialised_btn = findViewById(R.id.btn_login_consultant);
+        user_btn = findViewById(R.id.btn_login_user);
 
         chkBoxRememberMe = findViewById(R.id.remember_me_chkb);
         Paper.init(this);
@@ -49,7 +56,116 @@ public class LoginActivity extends AppCompatActivity {
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoginUser();
+                TextView b = (TextView) v;
+                String buttonText = b.getText().toString();
+                if (buttonText.equals("Consultant Login")){
+                   LoginConsultant();
+                }else{
+                    LoginUser();
+                }
+
+            }
+        });
+        user = findViewById(R.id.rv_user_login);
+        consultant = findViewById(R.id.rv_user_consultant);
+
+        specialised_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                parentDbName="Consultant";
+                login_btn.setText("Consultant Login");
+                user.setVisibility(View.VISIBLE);
+                consultant.setVisibility(View.GONE);
+
+            }
+        });
+        user_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                parentDbName = "Consultant";
+                login_btn.setText("User Login");
+                user.setVisibility(View.GONE);
+                consultant.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+    }
+
+    private void LoginConsultant() {
+        String phone = phonenumber.getText().toString();
+        String password = pass.getText().toString();
+
+        if (TextUtils.isEmpty(phone)) {
+            phonenumber.setError("Phone Number Is Required..");
+            FancyToast.makeText(this, "Phone Number Is Required..", FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show();
+            return;
+        } else if (TextUtils.isEmpty(password)) {
+            pass.setError("Password Is Required..");
+            FancyToast.makeText(this, "Password Is Required..", FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show();
+            return;
+        } else {
+            Loading.showProgressDialog(this,true);
+
+            AllowAccessToAccountConsultant(phone, password);
+
+
+        }
+    }
+
+    private void AllowAccessToAccountConsultant(final String phone, final String password) {
+        if (chkBoxRememberMe.isChecked()) {
+            Paper.book().write(Prevalent.UserPhoneKey, phone);
+            Paper.book().write(Prevalent.UserPasswordKey, password);
+        }
+
+
+        final DatabaseReference RootRef;
+        RootRef = FirebaseDatabase.getInstance().getReference();
+
+
+        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String uniqueid = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+                if (dataSnapshot.child("Consultants").child(uniqueid).exists()) {
+                    User usersData = dataSnapshot.child("Consultants").child(uniqueid).getValue(User.class);
+
+                    if (usersData.getPhone().equals(phone)) {
+                        if (usersData.getPass().equals(password)) {
+                            FancyToast.makeText(LoginActivity.this, "Congratulations " + usersData.getFname() + " your account has been Verified.", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, false).show();
+                            Loading.showProgressDialog(LoginActivity.this,false);
+                            Intent intent = new Intent(LoginActivity.this, HomeActivityConsultants.class);
+                            Prevalent.currentOnlineUser = usersData;
+                            startActivity(intent);
+
+                        } else {
+                            Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
+                            startActivity(intent);
+                            FancyToast.makeText(LoginActivity.this, "Wrong Password", FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
+
+                        }
+
+                    } else {
+                        Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                        FancyToast.makeText(LoginActivity.this, "Wrong Username or phone", FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
+
+                    }
+
+                } else {
+                    FancyToast.makeText(LoginActivity.this, "Account with this " + phone + " number do not exists.", FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
+                    Intent intent = new Intent(LoginActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                FancyToast.makeText(LoginActivity.this, String.valueOf(databaseError), FancyToast.LENGTH_LONG, FancyToast.ERROR, false).show();
+
+
             }
         });
 

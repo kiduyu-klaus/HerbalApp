@@ -155,7 +155,7 @@ public class BookAppointment extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 if (!(dataSnapshot.child("Appointments").child(cname).child(uname).exists())) {
-                    Appointment appointment= new Appointment(cname,cphone,uname,uphone,udescri,udate,image);
+                    Appointment appointment= new Appointment(cname,cphone,uname,uphone,udescri,udate,image,"Pending");
                     RootRef.child("Appointments").child(uname).child(cname).setValue(appointment)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override

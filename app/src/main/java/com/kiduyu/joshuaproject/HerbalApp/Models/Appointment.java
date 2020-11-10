@@ -5,13 +5,13 @@ package com.kiduyu.joshuaproject.HerbalApp.Models;
  * on 13/09/2020 15:26 2020
  */
 public class Appointment {
-    String cname,cphone,uname,uphone,udescri,udate,image;
+    String cname,cphone,uname,uphone,udescri,udate,image,status;
 
     public Appointment(){
 
     }
 
-    public Appointment(String cname, String cphone, String uname, String uphone, String udescri, String udate, String image) {
+    public Appointment(String cname, String cphone, String uname, String uphone, String udescri, String udate, String image, String status) {
         this.cname = cname;
         this.cphone = cphone;
         this.uname = uname;
@@ -19,6 +19,15 @@ public class Appointment {
         this.udescri = udescri;
         this.udate = udate;
         this.image = image;
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getCname() {

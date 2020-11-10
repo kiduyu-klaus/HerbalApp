@@ -1,4 +1,4 @@
-package com.kiduyu.joshuaproject.HerbalApp.UserFragments;
+package com.kiduyu.joshuaproject.HerbalApp.Consultants.Fragments;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -10,12 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -24,26 +22,27 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.kiduyu.joshuaproject.HerbalApp.Constants.Constants;
 import com.kiduyu.joshuaproject.HerbalApp.Models.Appointment;
 import com.kiduyu.joshuaproject.HerbalApp.Models.ChatList;
 import com.kiduyu.joshuaproject.HerbalApp.Session.Prevalent;
+import com.kiduyu.joshuaproject.HerbalApp.UserFragments.AppointmentsFragments;
+import com.kiduyu.joshuaproject.HerbalApp.UserFragments.ChatsFragment;
 import com.kiduyu.joshuaproject.HerbalApp.Util.Netcheck;
 import com.kiduyu.joshuaproject.k_vet.R;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
 /**
  * Created by Kiduyu klaus
- * on 13/09/2020 15:40 2020
+ * on 10/11/2020 03:34 2020
  */
-public class AppointmentsFragments extends Fragment {
+public class MyAppointments_Fragment extends Fragment {
     private RecyclerView recyclerView;
     private DatabaseReference mDatabase;
     ProgressDialog pDialog;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -82,8 +81,8 @@ public class AppointmentsFragments extends Fragment {
                 holder.single_application_username.setText(model.getUname());
                 holder.single_application_school.setText("Tel : "+model.getCphone());
                 holder.edt_myappications_descri11.setText("An Appointment to Dr."+model.getCname()+" was set on "+model.getUdate()+"\nThe Appointment message was"+model.getUdescri());
-
                 holder.status.setText("Status: "+model.getStatus());
+                holder.chat.setVisibility(View.GONE);
                 holder.chat.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
